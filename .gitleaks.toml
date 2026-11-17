@@ -1,0 +1,10 @@
+title = "LiveDance: exact public browser storage names"
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Audited localStorage key names, not authentication credentials"
+regexTarget = "secret"
+regexes = [
+  '''^LiveDance\.characters\.v04\.phase2$''',
+  '''^LiveDance\.presentation\.v2$''',
+]

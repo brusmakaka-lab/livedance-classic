@@ -19,3 +19,7 @@ Se seleccionan código, lockfiles, recursos estáticos, licencias y fuentes de a
 Antes de publicar se revisa con Gitleaks la selección y cada commit, comprobando el número real de commits analizados. La subida usa un repositorio público nuevo sin forzar historial. Se compara el árbol remoto completo y después se clona desde GitHub en otra carpeta, se reinstala desde los lockfiles y se repiten pruebas, compilación cuando corresponde y ensayo de navegador. La evidencia final se registra en el inventario local; este documento no anticipa resultados de pasos aún pendientes.
 
 No se borró, movió ni reconfiguró la aplicación original. La recuperación del código no implica que los datos privados y medios excluidos estén respaldados.
+
+## Coincidencias de revisión de secretos
+
+Gitleaks marcó nombres públicos usados como claves de localStorage. Se comprobó su uso en getItem/setItem; no son claves de API ni credenciales. `.gitleaks.toml` conserva las reglas por defecto y permite únicamente esos valores literales exactos. No se excluyen archivos completos ni reglas de detección.
