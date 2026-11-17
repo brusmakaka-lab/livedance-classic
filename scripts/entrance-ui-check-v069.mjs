@@ -1,0 +1,33 @@
+import {harness} from './v05-harness.mjs';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
+const h=await harness('entrance-menu',5485),p=h.page,checks=[];
+try{
+ await p.setViewportSize({width:1440,height:1080});await p.goto('http://127.0.0.1:5485/?empty=1&diagnostics=1');await p.waitForFunction(()=>__V05?.inspect().ready);
+ const menu=p.getByLabel('Baile de entrada',{exact:true});
+ await p.waitForFunction(()=>document.querySelector('[data-integration="entranceDance"]')?.options.length===7);
+ assert.equal(await menu.inputValue(),'MixamoBoxingLoop');
+ await menu.selectOption('MixamoTwistDanceLoop');
+ await p.getByRole('button',{name:'Probar baile',exact:true}).click();
+ await p.waitForFunction(()=>__V05.inspect().actors.some(a=>a.id==='__preview__'&&a.dance==='MixamoTwistDanceLoop'));
+ assert.equal((await p.evaluate(()=>__V05.inspect())).registered.length,0);
+ await p.locator('.entrance-settings').screenshot({path:'docs/v069/evidence/SELECTOR-ENTRADA.png'});
+ await menu.selectOption('MixamoRumbaDancingLoop');
+ await p.waitForFunction(()=>__V05.inspect().actors.some(a=>a.id==='__preview__'&&a.dance==='MixamoRumbaDancingLoop'));
+ await p.getByRole('button',{name:'Volver al espectáculo',exact:true}).click();
+ await p.waitForFunction(()=>!__V05.inspect().preview);
+ await p.reload();await p.waitForFunction(()=>__V05?.inspect().ready);assert.equal(await menu.inputValue(),'MixamoRumbaDancingLoop');
+ checks.push('Seven loaded dances; menu selects and previews different clips without creating participants; selection persists after reload');
+ await h.send('FOLLOW','entrance-test',{username:'Prueba'});
+ await p.waitForFunction(()=>__V05.inspect().actors.some(a=>a.id==='entrance-test'&&a.dance==='MixamoRumbaDancingLoop'));
+ await p.evaluate(()=>__V05.configure({materialize:false}));
+ await p.waitForFunction(()=>__V05.inspect().actors.some(a=>a.id==='entrance-test'&&a.dance==='MixamoRumbaDancingLoop'));
+ checks.push('Follow uses chosen dance with materialization enabled and disabled');
+ await p.keyboard.press('F8');
+ assert((await p.evaluate(()=>__V05.inspect())).paused);
+ await p.getByRole('button',{name:'Reanudar',exact:true}).click();
+ await p.getByRole('button',{name:'Probar baile',exact:true}).click();
+ await p.waitForFunction(()=>!!__V05.inspect().preview);
+ await p.keyboard.press('F8');assert.equal((await p.evaluate(()=>__V05.inspect())).preview,undefined);
+ assert.equal((await p.evaluate(()=>__V05.inspect())).registered.length,1);
+ checks.push('F8 cancels preview and preserves registered participant');
+ assert.deepEqual(h.errors,[]);
+}finally{await fs.writeFile('docs/v069/entrance-selector.json',JSON.stringify({checks,errors:h.errors},null,2));await h.close();console.log({checks,errors:h.errors});}

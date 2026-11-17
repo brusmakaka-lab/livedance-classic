@@ -1,0 +1,6 @@
+{
+  "public/integration/rio-mixamo.glb": "b5adcac8084c65ba7342c651324cc182aa0f7e5072b0f219dcc5f922eef04367",
+  "public/integration/adapted-clips.json": "5ba89bdb7b2ee66aaece064677af5204d10e5905be98024d832845f59f617240",
+  "public/integration/camera-tracks.json": "f04cc7dc2560ac84bddab4d9b0f556d97919f2294cd2c01fb9eca81f5ac47715",
+  "src/integration/model.ts": "154458559972866fc6ef537a6f2f5667c3317df9128acefa7ee20cd072ca9af3"
+}

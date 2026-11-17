@@ -1,0 +1,70 @@
+{
+  "packVersion": 2,
+  "characterId": "afterglow-runner",
+  "revision": "hero.1",
+  "rigVersion": "LiveDanceHumanoid1",
+  "lods": [
+    {
+      "level": 0,
+      "file": "hero-lod0.glb",
+      "bytes": 6633772,
+      "triangles": 46052,
+      "meshes": 25
+    },
+    {
+      "level": 1,
+      "file": "hero-lod1.glb",
+      "bytes": 3172716,
+      "triangles": 20480,
+      "meshes": 25
+    },
+    {
+      "level": 2,
+      "file": "hero-lod2.glb",
+      "bytes": 1278044,
+      "triangles": 5188,
+      "meshes": 14
+    }
+  ],
+  "animations": [
+    "Idle",
+    "Walk",
+    "Groove",
+    "Shuffle",
+    "Urban",
+    "Wave",
+    "Cheer",
+    "VIP"
+  ],
+  "materials": [
+    "Skin",
+    "Hair",
+    "HairLight",
+    "Jacket",
+    "Cream",
+    "Pants",
+    "Coral",
+    "Sole",
+    "Metal",
+    "EyeWhite",
+    "Iris",
+    "Dark",
+    "Mouth"
+  ],
+  "attachments": [
+    "head",
+    "leftHand",
+    "rightHand"
+  ],
+  "expressions": [
+    "NEUTRAL",
+    "HAPPY",
+    "EXCITED",
+    "SURPRISED",
+    "HYPE",
+    "VIP"
+  ],
+  "textures": [],
+  "origin": "Original authored surfaces, curves and keyframes in art-source/hero. No external models or textures.",
+  "license": "Original project content; redistribution with LiveDance permitted; Three.js MIT license retained."
+}

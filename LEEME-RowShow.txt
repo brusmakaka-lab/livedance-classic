@@ -1,0 +1,81 @@
+LiveDance v0.6.14 — RowShow
+
+INICIAR: Iniciar-RowShow.cmd
+VISTA LIMPIA: Captura-RowShow.cmd
+DETENER: Detener-RowShow.cmd
+REPORTE: docs\rowshow\INFORME.html
+VIDEO: docs\rowshow\COMPARACION-ANTES-AHORA.webm
+
+Copia nueva de E:\LiveDance\LiveDance-v0.6.13.2-GroupRotation.
+La base y las versiones anteriores se preservan. Puerto 5590, perfil
+.profile-rowshow y datos data-rowshow independientes. Se copiaron la
+biblioteca de música, sonidos, skins y asignaciones. Los ajustes que sólo
+estaban en el navegador anterior requieren configurarse en el perfil nuevo.
+
+20 PLAZAS POR FILA
+Las posiciones se asignan de izquierda a derecha según la primera detección
+del ID estable. La persona 21 comienza la fila 2; la 41, la fila 3.
+Una plaza no se reutiliza al retirar un modelo. No se expulsa a alguien por
+cada entrada. Las identidades y puntos se conservan durante la sesión;
+Reiniciar escena borra explícitamente la sesión como en la base.
+
+No se inventan eventos Join ni usuarios desde el total de audiencia.
+Se usan los eventos identificados que entregue el conector existente:
+member/join reales, comentario, Follow, like identificado o regalo.
+La primera actividad identificada también puede revelar una cuenta nueva.
+No se puede mostrar a quien TikTok no haya identificado mediante un evento.
+El conector no se cambió y no se realizó una conexión LIVE para validarlo.
+
+Cada modelo listo hace su presentación de 4,2 s en su plaza, sin esperar
+la presentación anterior; luego continúa bailando. La carga inicial de
+skins es asíncrona y se limita a 6 solicitudes concurrentes: no se garantiza
+latencia cero de red/disco. La cámara sigue al último modelo entrante listo
+y luego vuelve al grupo del segmento. Durante VIP/Fever, una ventana pequeña
+muestra al último entrante sin interrumpir la cámara principal.
+Si el evento trae una foto permitida se muestra; si falta o falla, una inicial.
+
+ENCUADRE VERTICAL
+Las filas SIEMPRE conservan 20 plazas lógicas. El ajuste inicial muestra
+segmentos de 3 plazas para legibilidad; también se puede elegir 5 o una
+panorámica de 20. La prueba de la fila completa muestra cuerpos pequeños
+y nombres superpuestos: no se recomienda como encuadre permanente vertical.
+Un segmento final puede contener 2 personas (20 no es múltiplo de 3).
+Quienes están fuera del encuadre conservan posición, identidad y baile.
+
+GPU
+En el panel Filas de 20: límite 20/40/60/80/100 modelos; retiro por lotes
+de 5 o 10, con fundido de 1,5 s. Se retiran los visuales antiguos y sus
+recursos; no las identidades, las estadísticas ni las asignaciones de skin.
+El límite inicial es 60. Se protege al último entrante, las entradas que
+presentan y los eventos pendientes/activos. Una ráfaga protegida puede
+superar temporalmente el límite; después converge por lotes.
+Un regalo/Follow de alguien retirado vuelve a cargar su modelo en su plaza.
+El registro de identidades crece durante la sesión y consume memoria CPU;
+el límite de GPU no es un límite de ese registro.
+
+REGALOS Y PRIORIDADES
+Rosa/regalo normal: baile especial breve de 3 s y regreso al baile.
+VIP: plano cinematográfico al donador, realce y coreografía sincronizada
+con dos acompañantes cercanos cuando existen y están cargados.
+ShowDirector mantiene VIP > Fever > regalo/Follow. Un VIP suspende Fever
+y éste continúa con su tiempo conservado. Likes/comentarios no reinician
+los planos. Las bienvenidas visuales avanzan en paralelo.
+F8 conserva la parada explícita de la base y cancela las presentaciones;
+Reanudar continúa el espectáculo sin inventar nuevos ingresos.
+
+PRUEBAS REPRODUCIBLES
+npm test
+npm run build
+npm run test:rowshow
+node scripts/rowshow-visual-check.mjs
+node scripts/rowshow-record.mjs
+
+La comparación necesita una copia local de la base: por defecto
+work\baseline, que el script crea desde la base sin modificarla.
+También puede definirse LIVEDANCE_BASELINE_DIR a otra copia aislada.
+El video es una simulación silenciosa. Las mediciones de rendimiento se
+hacen por separado, con animación y render activos, sin grabación.
+No se afirma validación LIVE ni de captura real con OBS/TikTok Live Studio.
+
+Los archivos LEEME/launchers con nombres GroupRotation o pruebas históricas
+pertenecen a la base heredada. Para esta versión usar los accesos RowShow.

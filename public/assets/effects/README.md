@@ -1,0 +1,1 @@
+Aura de anillo, columna de luz estilizada, partículas, indicador de corona y texto creados proceduralmente en src/scene.ts. Cada efecto se registra por dancer + tipo, tiene prioridad y vencimiento, y sus recursos se liberan al expirar o al retirar el dancer.

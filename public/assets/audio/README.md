@@ -1,0 +1,1 @@
+No se incluye música. Efectos originales sintetizados con Web Audio en src/audio.ts. Música local opcional elegida por el usuario; no se sube, no se incluye en el paquete ni se conserva entre reinicios. El usuario debe disponer de derechos para su transmisión.

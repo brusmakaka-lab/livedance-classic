@@ -1,0 +1,75 @@
+{
+  "characterPackVersion": "2.0.0-prototype.1",
+  "rig": "LiveDanceHumanoid1",
+  "bones": [
+    "root",
+    "hips",
+    "spine",
+    "chest",
+    "neck",
+    "head",
+    "leftShoulder",
+    "leftUpperArm",
+    "leftLowerArm",
+    "leftHand",
+    "leftUpperLeg",
+    "leftLowerLeg",
+    "leftFoot",
+    "rightShoulder",
+    "rightUpperArm",
+    "rightLowerArm",
+    "rightHand",
+    "rightUpperLeg",
+    "rightLowerLeg",
+    "rightFoot"
+  ],
+  "clips": [
+    "Idle",
+    "Walk",
+    "Groove",
+    "Disco",
+    "Shuffle",
+    "WaveDance",
+    "Bounce",
+    "Robot",
+    "Electro",
+    "ClapGroove",
+    "Wave",
+    "Cheer",
+    "Jump",
+    "Celebrate",
+    "Heart",
+    "Shock",
+    "VIP",
+    "Top",
+    "Hype"
+  ],
+  "assets": [
+    {
+      "file": "lod0.glb",
+      "lod": 0,
+      "bytes": 3826188,
+      "bodyTriangles": 10432,
+      "bones": 20,
+      "clips": 19
+    },
+    {
+      "file": "lod1.glb",
+      "lod": 1,
+      "bytes": 1866428,
+      "bodyTriangles": 4280,
+      "bones": 20,
+      "clips": 19
+    },
+    {
+      "file": "lod2.glb",
+      "lod": 2,
+      "bytes": 1022020,
+      "bodyTriangles": 1416,
+      "bones": 20,
+      "clips": 19
+    }
+  ],
+  "origin": "Original geometry and keyframes authored locally for LiveDance; no third-party model data",
+  "license": "Project-owned original assets; redistribution with LiveDance permitted"
+}

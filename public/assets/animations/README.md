@@ -1,0 +1,1 @@
+Las seis animaciones originales están embebidas en ../characters/afterglow-original.glb. La versión de tiempo real mezcla poses en src/avatars.ts: Idle (respiración), Walk (balanceo contralateral), Groove (rebote y hombros), Disco (brazo arriba), Shuffle (pasos alternos), Wave (ondas de brazos). Offsets y velocidades deterministas por viewerId. No se usan clips descargados.

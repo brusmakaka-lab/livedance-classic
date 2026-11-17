@@ -1,0 +1,70 @@
+LiveDance v0.6.13.2 — GroupRotation
+
+INICIAR: Iniciar-GroupRotation.cmd
+VISTA LIMPIA: Captura-GroupRotation.cmd
+DETENER: Detener-GroupRotation.cmd
+INFORME Y VIDEOS COMPARATIVOS: docs\grouprotation\INFORME.html
+
+Copia independiente de v0.6.13.1 GroupCamera. Puerto 5580, perfil
+.profile-grouprotation y datos data-grouprotation. Las versiones anteriores
+no se modifican. Biblioteca de musica y skins copiadas, sin compartir datos.
+Los ajustes guardados solo en el navegador deben configurarse en el perfil nuevo.
+
+ROTACION
+Cinco lugares visibles por defecto. Los IDs, skins y nombres pertenecen al
+participante. El lugar es una asignacion independiente. Cuando comienza la
+presentacion de alguien fuera del grupo, ocupa un lugar libre o reemplaza al
+ocupante elegible que lleva mas tiempo dentro del grupo. Los demas no cambian
+de lugar. Al retornar, un participante se incorpora al final de ese orden FIFO.
+
+Se protegen el protagonista, las presentaciones suspendidas y los VIP activos
+o pendientes. Los VIP de World conservan su proteccion hasta que vence su
+estado. Si todos los lugares estan protegidos, la nueva presentacion espera.
+Durante Fever no entran nuevas bienvenidas al grupo; un VIP puede interrumpir
+Fever y este se reanuda una sola vez con su tiempo conservado.
+
+Una identidad nueva recibe una bienvenida de 5 segundos por Join, comentario
+o like identificable; Follow/regalo conservan su presentacion propia.
+Los eventos repetidos no duplican al usuario. Un Join repetido de un ID ya
+conocido no genera otra bienvenida. Likes y comentarios actualizan la ultima
+interaccion pero no vuelven inmune al participante ni lo adelantan en FIFO.
+
+Los desplazados siguen registrados: vuelven con Follow/regalo o con el boton
+de siguiente grupo existente, que ahora devuelve un desplazado por vez,
+empezando por el que mas lleva fuera. Tambien pueden llenar una vacante.
+No hay rotacion automatica por temporizador ni expulsiones del registro
+por el mero hecho de salir de los cinco visibles. El registro World mantiene
+su limite y politica de inactividad originales (hasta 30 participantes).
+
+ShowDirector sigue siendo el unico director. Mantiene prioridades VIP > Fever
+> bienvenida/Follow/regalo normal, deduplicacion y una sola presentacion activa.
+Entre presentaciones ordinarias hay 1,5 segundos de plano grupal. VIP y Fever
+pueden tomar prioridad durante ese intervalo. La camara y sus transiciones
+son exactamente las de GroupCamera: no se redisenaron.
+
+La cola admite 64 presentaciones, hasta 30 bienvenidas pendientes. Las
+bienvenidas de usuarios registrados conservan su turno; no vencen mientras
+esperan otras presentaciones. Para IDs que nunca llegan al registro vence
+el plazo de 45 segundos. Follow/regalos conservan sus caducidades anteriores.
+F8 cancela presentaciones. Una sucesion sin fin de eventos prioritarios puede
+demorar bienvenidas: el sistema no interrumpe un VIP para forzar la rotacion.
+
+EVALUACION DE CAPACIDAD
+La configuracion IntegrationConfig acepta visibleCapacity: 5, 6, 8 o 10 y
+groupLayout: ROWS o ARC. Los cinco lugares originales no cambian con el preset.
+Los valores mayores solo se preparan para evaluacion, sin nuevo control en
+los paneles ni habilitacion automatica. El valor 20 se rechaza y vuelve a 5.
+Medir presets: node scripts/grouprotation-capacity.mjs
+Ver resultados y capturas en docs\grouprotation. Las mediciones de plano WIDE
+no validan todos los primeros planos de esas capacidades para uso en LIVE.
+
+PRUEBAS
+npm test
+npm run test:grouprotation
+npm run record:grouprotation
+node scripts/grouprotation-record.mjs --baseline
+
+El panel lateral de los videos muestra entradas, salidas y lugares, y existe
+solo en la grabacion de prueba. No se agrega al producto ni a la captura limpia.
+Simulaciones locales silenciosas, sin afirmar validacion real de TikTok LIVE.
+No se agregaron fondos, NPC, vehiculos, ranking ni nuevas coreografias.

@@ -1,0 +1,1 @@
+Afterglow es geometría y materiales originales generados en src/scene.ts. Pista de anillos, centro VIP, portal, altavoces, barras luminosas, estrellas y entrada. Sin texturas descargadas. Fuentes: Segoe UI / fuentes del sistema; no se redistribuyen archivos de fuente.

@@ -1,0 +1,9 @@
+{
+  "name": "livedance-tiktok-adapter",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "dependencies": {
+    "tiktok-live-connector": "2.5.0"
+  }
+}
